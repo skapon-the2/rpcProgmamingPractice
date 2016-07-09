@@ -1,4 +1,4 @@
-package syain;
+﻿package syain;
 
 import java.util.Map;
 
@@ -16,7 +16,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	private String loginPass;
 	private String s_loginPass;
 	private Map<String, Object> session;
-
+//test
 	//DBの情報と照合
 	public String execute() throws Exception{
 		M_userDAO mUserDAO = new M_userDAO();
