@@ -1,24 +1,27 @@
-package syain;
+package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.T_syainDAO;
+import syain.ListUser;
 /**
  *
- * 更新画面の更新ボタン押下時実行
+ * 登録画面の登録ボタン押下時実行
  *
  */
-public class UpdateSuccess extends ActionSupport {
-	private String syain_id;
+public class TourokuAction extends ActionSupport{
 	private String name;
 	private String gender;
 	private String birthday;
+	private String syain_id;
 	private String ge;
-	ListUser user = new ListUser();
+
+
 
 	public String execute() throws Exception{
-		T_syainDAO tSyainDAO = new T_syainDAO();
-		user = tSyainDAO.syainUpdate(getName(),getGender(),getBirthday(),getSyain_id());
+		T_syainDAO t_syaindao = new T_syainDAO();
+		ListUser user = new ListUser();
+		user = t_syaindao.sayinTouroku(this.getName(),this.getGender(),this.getBirthday());
 		this.setSyain_id(user.getSyain_id());
 		this.setName(user.getName());
 		this.setGender(user.getGender());
@@ -28,12 +31,6 @@ public class UpdateSuccess extends ActionSupport {
 		return "success";
 	}
 
-	public void setSyain_id(String syain_id){
-		this.syain_id = syain_id;
-	}
-	public String getSyain_id(){
-		return syain_id;
-	}
 	public void setName(String name){
 		this.name = name;
 	}
@@ -51,6 +48,12 @@ public class UpdateSuccess extends ActionSupport {
 	}
 	public String getBirthday(){
 		return birthday;
+	}
+	public void setSyain_id(String syain_id){
+		this.syain_id = syain_id;
+	}
+	public String getSyain_id(){
+		return syain_id;
 	}
 	public void setGe(String ge){
 		this.ge = ge;

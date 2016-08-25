@@ -1,30 +1,28 @@
-package syain;
+package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.T_syainDAO;
+import syain.ListUser;
 /**
  *
- * 更新画面の更新ボタン押下時実行
+ * 一覧画面の編集ボタン押下時実行
  *
  */
-public class UpdateSuccess extends ActionSupport {
+public class UpdateUserAction extends ActionSupport{
 	private String syain_id;
 	private String name;
 	private String gender;
 	private String birthday;
-	private String ge;
-	ListUser user = new ListUser();
 
-	public String execute() throws Exception{
+	public String Up() throws Exception{
 		T_syainDAO tSyainDAO = new T_syainDAO();
-		user = tSyainDAO.syainUpdate(getName(),getGender(),getBirthday(),getSyain_id());
+		ListUser user = new ListUser();
+		user = tSyainDAO.syainSelect(getSyain_id());
 		this.setSyain_id(user.getSyain_id());
 		this.setName(user.getName());
 		this.setGender(user.getGender());
 		this.setBirthday(user.getBirthday());
-		this.setGe(user.getGe());
-
 		return "success";
 	}
 
@@ -51,11 +49,5 @@ public class UpdateSuccess extends ActionSupport {
 	}
 	public String getBirthday(){
 		return birthday;
-	}
-	public void setGe(String ge){
-		this.ge = ge;
-	}
-	public String getGe(){
-		return ge;
 	}
 }
