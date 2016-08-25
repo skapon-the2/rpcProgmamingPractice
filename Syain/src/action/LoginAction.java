@@ -1,10 +1,13 @@
-﻿package syain;
+package action;
 
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
+
+import dao.M_userDAO;
+import syain.M_User;
 /**
  *
  * ログイン画面のログインボタン押下時実行
@@ -16,7 +19,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	private String loginPass;
 	private String s_loginPass;
 	private Map<String, Object> session;
-//test3
+
 	//DBの情報と照合
 	public String execute() throws Exception{
 		M_userDAO mUserDAO = new M_userDAO();
